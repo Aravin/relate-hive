@@ -1,5 +1,13 @@
 import type { Metadata } from "next";
+import { AR_One_Sans } from 'next/font/google'
 import "./globals.css";
+import Nav from "./components/Nav";
+
+const arOpenSans = AR_One_Sans({
+  weight: ['400', '700'],
+  subsets: ['latin'],
+  display: 'swap',
+})
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -12,31 +20,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" data-theme="light">
+    <html lang="en" data-theme="light" className={arOpenSans.className}>
       <body>
-        <nav className="flex items-center justify-between p-4">
-          <div>
-            <span>RelatHive</span>
-          </div>
-          <ul className="flex space-x-4">
-            <li>
-              <a href="#" className="btn btn-ghost">
-                Home
-              </a>
-            </li>
-            <li>
-              <a href="#" className="btn btn-ghost">
-                About
-              </a>
-            </li>
-            <li>
-              <a href="#" className="btn btn-ghost">
-                Contact
-              </a>
-            </li>
-          </ul>
-        </nav>
-        {children}
+        <Nav />
+        <main className=""> {/* Added container, margin, and padding */}
+          {children}
+        </main>
       </body>
     </html>
   );
